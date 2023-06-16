@@ -185,64 +185,64 @@ ScreenManager:
                     spacing:10
                     padding:18,0
                     
-                    TooltipMDIconButton:
-                        id:product_name
-                        icon_size:200
-                        tooltip_text:""
-                        theme_text_color:'Custom'
-                        text_color:[1,1,1,1]
-                        on_release:app.search_amazon(0)
-                        LoaderImage:
-                            source:app.images[0]
-                            size:"500dp","500dp"
-                    MDIconButton:
-                        icon_size:200
-                        theme_text_color:'Custom'
-                        text_color:[1,1,1,1]
-                        on_release:app.search_amazon(1)
-                        LoaderImage:
-                            source:app.images[1]
-                            size:"500dp","500dp"
-                    MDIconButton:
-                        icon_size:200
-                        theme_text_color:'Custom'
-                        text_color:[1,1,1,1]
-                        on_release:app.search_amazon(2)
-                        LoaderImage:
-                            source:app.images[2]
-                            size:"500dp","500dp"
-                    MDIconButton:
-                        icon_size:200
-                        theme_text_color:'Custom'
-                        text_color:[1,1,1,1]
-                        on_release:app.search_amazon(3)
-                        LoaderImage:
-                            source:app.images[3]
-                            size:"500dp","500dp"
-                    MDIconButton:
-                        icon_size:200
-                        theme_text_color:'Custom'
-                        text_color:[1,1,1,1]
-                        on_release:app.search_amazon(4)
-                        LoaderImage:
-                            source:app.images[4]
-                            size:"500dp","500dp"
-                    MDIconButton:
-                        icon_size:200
-                        theme_text_color:'Custom'
-                        text_color:[1,1,1,1]
-                        on_release:app.search_amazon(5)
-                        LoaderImage:
-                            source:app.images[5]
-                            size:"500dp","500dp"
+                    # TooltipMDIconButton:
+                    #     id:product_name
+                    #     icon_size:200
+                    #     tooltip_text:""
+                    #     theme_text_color:'Custom'
+                    #     text_color:[1,1,1,1]
+                    #     on_release:app.search_amazon(0)
+                    #     LoaderImage:
+                    #         source:app.images[0]
+                    #         size:"500dp","500dp"
                     # MDIconButton:
                     #     icon_size:200
                     #     theme_text_color:'Custom'
                     #     text_color:[1,1,1,1]
-                    #     on_release:app.search_amazon(6)
+                    #     on_release:app.search_amazon(1)
                     #     LoaderImage:
-                    #         source:app.images[6]
+                    #         source:app.images[1]
                     #         size:"500dp","500dp"
+                    # MDIconButton:
+                    #     icon_size:200
+                    #     theme_text_color:'Custom'
+                    #     text_color:[1,1,1,1]
+                    #     on_release:app.search_amazon(2)
+                    #     LoaderImage:
+                    #         source:app.images[2]
+                    #         size:"500dp","500dp"
+                    # MDIconButton:
+                    #     icon_size:200
+                    #     theme_text_color:'Custom'
+                    #     text_color:[1,1,1,1]
+                    #     on_release:app.search_amazon(3)
+                    #     LoaderImage:
+                    #         source:app.images[3]
+                    #         size:"500dp","500dp"
+                    # MDIconButton:
+                    #     icon_size:200
+                    #     theme_text_color:'Custom'
+                    #     text_color:[1,1,1,1]
+                    #     on_release:app.search_amazon(4)
+                    #     LoaderImage:
+                    #         source:app.images[4]
+                    #         size:"500dp","500dp"
+                    # MDIconButton:
+                    #     icon_size:200
+                    #     theme_text_color:'Custom'
+                    #     text_color:[1,1,1,1]
+                    #     on_release:app.search_amazon(5)
+                    #     LoaderImage:
+                    #         source:app.images[5]
+                    #         size:"500dp","500dp"
+                    # # MDIconButton:
+                    # #     icon_size:200
+                    # #     theme_text_color:'Custom'
+                    # #     text_color:[1,1,1,1]
+                    # #     on_release:app.search_amazon(6)
+                    # #     LoaderImage:
+                    # #         source:app.images[6]
+                    # #         size:"500dp","500dp"
             ScrollView:
                 do_scroll_y:False
                 do_scroll_x:True
@@ -494,24 +494,24 @@ class NewApp(MDApp):
             self.root.current = 'third'
             self.product_name=self.strng.get_screen('second').ids.search_text.text
             self.data=self.flipkart_product_name(search_text=self.product_name)
-            self.amazon_data=self.amazon_product_name(search_text=self.product_name)
-            self.amazon_name=self.amazon_data['name']
-            self.amazon_prices=self.amazon_data['price']
-            self.amazon_link=self.amazon_data['link']
+            # self.amazon_data=self.amazon_product_name(search_text=self.product_name)
+            # self.amazon_name=self.amazon_data['name']
+            # self.amazon_prices=self.amazon_data['price']
+            # self.amazon_link=self.amazon_data['link']
             self.names=self.data['name']
             self.prices=self.data['price']
             self.amazon=self.callback(search_text=self.product_name)
             self.flipt= self.flipkart(search_text=self.product_name)
             self.links=self.data['link']
-            for p in range(0,len(self.amazon)):
-                button = MDIconButton(
-                    icon_size=200,
-                    theme_text_color='Custom',
-                    text_color=[1, 1, 1, 1],
-                    on_release=lambda instance, i=p,root=self.root,strng=self.strng,names=self.amazon_name,price=self.amazon_prices,link=self.amazon_link: (self.on_button_click_wrapper(index=i,root=root,strng=strng,names=names,price=price,link=link)(instance),self.add_to_review_list_amazon(i))
-                )
-                button.add_widget(LoaderImage(source=self.amazon[p]))  # set the image as the background
-                self.strng.get_screen('third').ids.amazon_list.add_widget(button)
+            # for p in range(0,len(self.amazon)):
+                # button = MDIconButton(
+                #     icon_size=200,
+                #     theme_text_color='Custom',
+                #     text_color=[1, 1, 1, 1],
+                #     on_release=lambda instance, i=p,root=self.root,strng=self.strng,names=self.amazon_name,price=self.amazon_prices,link=self.amazon_link: (self.on_button_click_wrapper(index=i,root=root,strng=strng,names=names,price=price,link=link)(instance),self.add_to_review_list_amazon(i))
+                # )
+                # button.add_widget(LoaderImage(source=self.amazon[p]))  # set the image as the background
+                # self.strng.get_screen('third').ids.amazon_list.add_widget(button)
             for i in range(0,len(self.flipt)):
                 button = MDIconButton(
                     icon_size=200,
@@ -528,27 +528,27 @@ class NewApp(MDApp):
         self.root.current = 'third'
         self.product_name=self.flipkart_deal_names[x]
         self.data = self.flipkart_product_name(search_text=self.product_name)
-        self.amazon_data = self.amazon_product_name(search_text=self.product_name)
-        self.amazon_name = self.amazon_data['name']
-        self.amazon_prices = self.amazon_data['price']
-        self.amazon_link = self.amazon_data['link']
+        # self.amazon_data = self.amazon_product_name(search_text=self.product_name)
+        # self.amazon_name = self.amazon_data['name']
+        # self.amazon_prices = self.amazon_data['price']
+        # self.amazon_link = self.amazon_data['link']
         self.names = self.data['name']
         self.prices = self.data['price']
         self.amazon = self.callback(search_text=self.product_name)
         self.flipt = self.flipkart(search_text=self.product_name)
         self.links = self.data['link']
-        for p in range(0, len(self.amazon)):
-            button = MDIconButton(
-                icon_size=200,
-                theme_text_color='Custom',
-                text_color=[1, 1, 1, 1],
-                on_release=lambda instance, i=p, root=self.root, strng=self.strng, names=self.amazon_name,
-                                  price=self.amazon_prices, link=self.amazon_link: (
-                self.on_button_click_wrapper(index=i, root=root, strng=strng, names=names, price=price, link=link)(
-                    instance), self.add_to_review_list_amazon(i))
-            )
-            button.add_widget(LoaderImage(source=self.amazon[p]))  # set the image as the background
-            self.strng.get_screen('third').ids.amazon_list.add_widget(button)
+        # for p in range(0, len(self.amazon)):
+        #     button = MDIconButton(
+        #         icon_size=200,
+        #         theme_text_color='Custom',
+        #         text_color=[1, 1, 1, 1],
+        #         on_release=lambda instance, i=p, root=self.root, strng=self.strng, names=self.amazon_name,
+        #                           price=self.amazon_prices, link=self.amazon_link: (
+        #         self.on_button_click_wrapper(index=i, root=root, strng=strng, names=names, price=price, link=link)(
+        #             instance), self.add_to_review_list_amazon(i))
+        #     )
+        #     button.add_widget(LoaderImage(source=self.amazon[p]))  # set the image as the background
+        #     self.strng.get_screen('third').ids.amazon_list.add_widget(button)
         for i in range(0, len(self.flipt)):
             button = MDIconButton(
                 icon_size=200,
@@ -615,7 +615,7 @@ class NewApp(MDApp):
         rev = self.reviews
         if len(rev) != 0:
             table = MDDataTable(pos_hint={"center_x": 0.5, "center_y": 0.3},size_hint= (0.9, 1), check=False, rows_num=len(rev),
-                                column_data=[("REVIEWS", dp(250)), ("SENTIMENT", dp(250))]
+                                column_data=[("REVIEWS", dp(500)), ("SENTIMENT", dp(10))]
                                 , row_data=[(i, self.emojis(self.sentiment_analysis(i))) for i in rev] +[("")]*3)
             # table.bind(on_check_press=self.check_press)
             # table.bind(on_row_press=self.row_press)
