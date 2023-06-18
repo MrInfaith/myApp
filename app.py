@@ -8,11 +8,6 @@ from nltk.stem.porter import PorterStemmer
 from  kivymd.uix.datatables import MDDataTable
 from kivy.metrics import dp
 import pandas as pd
-import pywhatkit
-from bs4 import BeautifulSoup
-import  requests
-from PIL import Image
-from io import BytesIO
 from functools import partial
 import speech_recognition_python as sr
 from kivy.lang import Builder
@@ -573,8 +568,44 @@ class NewApp(MDApp):
     # def add_to_review_list_amazon(self, index):
     #     self.amazon_rev=self.amazon_reviews(index=index)
 
-    def on_button_click_wrapper(self,index,root,strng,names,price,link):
-        def on_button_click(instance,self=self):
+    # def on_button_click_wrapper(self,index,root,strng,names,price,link):
+    #     def on_button_click(instance,self=self):
+    #         root.current = 'product'
+    #         root.transition.direction = 'right'
+    #         named = MDLabel(
+    #             text="NAME :",
+    #             pos_hint={"center_x": 0.0, "center_y": 0.78}
+    #         )
+    #         strng.get_screen('product').ids.product_box.add_widget(named)
+    #         label = MDLabel(
+    #             text=names[index],
+    #             pos_hint={"center_x": 0.4, "center_y": 0.78}
+    #         )
+    #         strng.get_screen('product').ids.product_box.add_widget(label)
+    #         label = MDLabel(
+    #             text="PRICE :",
+    #             pos_hint={"center_x": 0.0, "center_y": 0.60}
+    #         )
+    #         strng.get_screen('product').ids.price.add_widget(label)
+    #         label = MDLabel(
+    #             text=price[index],
+    #             pos_hint={"center_x": 0.4, "center_y": 0.60}
+    #         )
+    #         strng.get_screen('product').ids.price.add_widget(label)
+    #         label = MDLabel(
+    #             text="BUY LINK :",
+    #             pos_hint={"center_x": 0.0, "center_y": 0.40}
+    #         )
+    #         strng.get_screen('product').ids.buy_link.add_widget(label)
+    #         label = MDTextButton(
+    #             text='CLICK HERE',
+    #             pos_hint={"center_x": 0.4, "center_y": 0.40},
+    #             on_press=lambda instance, link=link[index]: webbrowser.open(link)
+    #         )
+    #         strng.get_screen('product').ids.buy_link.add_widget(label)
+    #     return partial(on_button_click, self)
+    def on_button_click_wrapper(self, index, root, strng, names, price, link):
+        def on_button_click(instance, self=self):
             root.current = 'product'
             root.transition.direction = 'right'
             named = MDLabel(
@@ -608,7 +639,8 @@ class NewApp(MDApp):
                 on_press=lambda instance, link=link[index]: webbrowser.open(link)
             )
             strng.get_screen('product').ids.buy_link.add_widget(label)
-        return partial(on_button_click, self)
+
+        return lambda instance: on_button_click(instance, self)
 
     def on_review_click_flipkart(self, instance):
         self.root.current = 'review'
